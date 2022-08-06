@@ -1,6 +1,7 @@
-import { Box, TextField, Button } from "@mui/material";
+import { Box, TextField, Button, FormHelperText } from "@mui/material";
 import useField from "../hooks/useField";
 import { TextWithDivider } from "../styles/General";
+import { labelTypes } from "./DebitAndCredit";
 
 export default function AddTransactions() {
   const [nameField, handleChangeName, handleBlurName] = useField();
@@ -35,6 +36,16 @@ export default function AddTransactions() {
           type="number"
           onBlur={handleBlurValue}
         />
+        <Box mt={1}>
+          <FormHelperText>
+            <Box display="flex" justifyContent="space-between">
+              <Box style={{ color: labelTypes.Credit }}>
+                Negativo - Despesas
+              </Box>
+              <Box style={{ color: labelTypes.Debit }}>Positivo - Receitas</Box>
+            </Box>
+          </FormHelperText>
+        </Box>
       </Box>
       <Box mt={2.4}>
         <Button color="primary" variant="contained" fullWidth>
