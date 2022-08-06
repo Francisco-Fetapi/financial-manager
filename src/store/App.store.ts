@@ -32,7 +32,7 @@ const store = configureStore({
   },
 });
 
-export const {} = counterSlice.actions;
+export const { addTransaction, removeTransaction } = counterSlice.actions;
 export default store;
 
 export type RootState = ReturnType<typeof store.getState>;

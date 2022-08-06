@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 interface FieldProps {
-  value?: string;
+  value?: string | number;
   error?: boolean;
   helperText?: string;
 }
@@ -13,20 +13,23 @@ type handleFocusFunc = (
   e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement, Element>
 ) => void;
 
-export default function useField(): [
+export default function useField<T>(): [
   FieldProps,
   handleChangeFunc,
   handleFocusFunc
 ] {
   const [field, setField] = useState<FieldProps>({
-    value: "",
     error: false,
     helperText: "",
   });
   const handleChange: handleChangeFunc = (e) => {
     const value = e?.target.value;
     if (!value || value === "0") {
-      setField({ value: "", error: true, helperText: "Campo inválido" });
+      setField({
+        value,
+        error: true,
+        helperText: "Campo inválido",
+      });
       return;
     }
     setField({ value, error: false, helperText: "" });
