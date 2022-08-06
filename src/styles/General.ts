@@ -1,4 +1,4 @@
-import { Typography } from "@mui/material";
+import { Typography, Paper } from "@mui/material";
 import styled from "styled-components";
 
 export const AppContainer = styled.div`
@@ -12,5 +12,8 @@ export const AccountingCardContainer = styled.div`
   display: flex;
   flex-direction: column;
 `;
+export const DebitAndCreditPaper = styled(Paper)`
+  padding: 20px;
+` as typeof Paper;
 
 export const Text = styled(Typography)`` as typeof Typography;

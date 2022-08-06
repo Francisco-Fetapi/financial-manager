@@ -6,7 +6,9 @@ export default function CurrentBalance() {
   return (
     <Box mt={3}>
       <Text variant="button">Saldo Atual</Text>
-      <Text variant="h4">{ConvertToLocalMoney(0)}</Text>
+      <Text variant="h4" color="primary" fontWeight={500}>
+        {ConvertToLocalMoney(0)}
+      </Text>
     </Box>
   );
 }
