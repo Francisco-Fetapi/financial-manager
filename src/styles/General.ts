@@ -25,15 +25,25 @@ export const TextWithDivider = styled(Typography)`
 ` as typeof Typography;
 
 export const TransactionContainer = styled(Paper)`
+  height: 50px;
   padding: 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  cursor: default;
 
   &.Debit {
     border-right: 6px solid ${labelTypes.Debit};
   }
   &.Credit {
     border-right: 6px solid ${labelTypes.Credit};
+  }
+  .close-button {
+    display: none;
+  }
+  :hover {
+    .close-button {
+      display: block;
+    }
   }
 ` as typeof Paper;

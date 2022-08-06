@@ -7,7 +7,8 @@ export default function Transactions() {
     <Box mt={3}>
       <TextWithDivider>Transações</TextWithDivider>
       <Box mt={3}>
-        <Transaction name="Ola Mundo" value={200} type="Debit" />
+        <Transaction name="Ola Mundo" value={200} />
+        <Transaction name="Ola Mundo" value={-2200} />
       </Box>
     </Box>
   );
