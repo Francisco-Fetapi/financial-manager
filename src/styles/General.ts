@@ -11,7 +11,6 @@ export const AccountingCardContainer = styled.div`
   padding: 20px;
   display: flex;
   flex-direction: column;
-  align-items: center;
 `;
 
 export const Text = styled(Typography)`` as typeof Typography;
