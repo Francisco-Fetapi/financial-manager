@@ -17,3 +17,8 @@ export const DebitAndCreditPaper = styled(Paper)`
 ` as typeof Paper;
 
 export const Text = styled(Typography)`` as typeof Typography;
+export const TextWithDivider = styled(Typography)`
+  padding-bottom: 8px;
+  border-bottom: 1px solid #bababa;
+  font-weight: 600 !important;
+` as typeof Typography;
