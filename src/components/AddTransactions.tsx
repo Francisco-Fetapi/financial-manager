@@ -10,9 +10,6 @@ export default function AddTransactions() {
     <Box mt={4}>
       <TextWithDivider>Adicionar transação</TextWithDivider>
       <Box mt={2}>
-        <Box mb={0.7}>
-          <FormLabel error={nameField.error}>Nome</FormLabel>
-        </Box>
         <TextField
           variant="outlined"
           color="primary"
@@ -21,12 +18,10 @@ export default function AddTransactions() {
           fullWidth
           {...nameField}
           onChange={handleChangeName}
+          label="Nome"
         />
       </Box>
-      <Box mt={1}>
-        <Box mb={0.7}>
-          <FormLabel error={valueField.error}>Valor</FormLabel>
-        </Box>
+      <Box mt={2}>
         <TextField
           variant="outlined"
           color="primary"
@@ -35,6 +30,8 @@ export default function AddTransactions() {
           fullWidth
           {...valueField}
           onChange={handleChangeValue}
+          label="Valor"
+          type="number"
         />
       </Box>
     </Box>

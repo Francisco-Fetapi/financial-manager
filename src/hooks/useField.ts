@@ -18,7 +18,7 @@ export default function useField(): [FieldProps, handleChangeFunc] {
   });
   const handleChange: handleChangeFunc = (e) => {
     const value = e?.target.value;
-    if (!value) {
+    if (!value || value === "0") {
       setField({ value: "", error: true, helperText: "Campo inválido" });
       return;
     }
