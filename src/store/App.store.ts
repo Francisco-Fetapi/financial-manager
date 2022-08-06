@@ -10,11 +10,7 @@ export interface Accounting {
 }
 
 const initialState: Accounting = {
-  transactions: [
-    { name: "Primeira Transacaao", value: 12000 },
-    { name: "Segunda Transacaao", value: -2000 },
-    { name: "Ultima Transacaao", value: 32050 },
-  ],
+  transactions: [],
 };
 
 export const accountingSlice = createSlice({

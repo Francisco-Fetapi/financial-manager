@@ -6,7 +6,6 @@ import Transaction from "./Transaction";
 
 export default function Transactions() {
   const transactions = useSelector(getAllTransactions);
-  console.log(transactions);
   return (
     <Box mt={3}>
       <TextWithDivider>Transações</TextWithDivider>
