@@ -30,7 +30,6 @@ export default function AddTransactions() {
         <TextField
           variant="outlined"
           color="primary"
-          size="small"
           placeholder="Nome da transação"
           fullWidth
           {...nameField}
@@ -43,7 +42,6 @@ export default function AddTransactions() {
         <TextField
           variant="outlined"
           color="primary"
-          size="small"
           placeholder="Valor da transação"
           fullWidth
           {...valueField}

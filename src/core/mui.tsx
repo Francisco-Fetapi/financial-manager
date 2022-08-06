@@ -9,7 +9,18 @@ interface Props {
 }
 
 export default function Layout({ children }: Props) {
-  const theme = createTheme({});
+  const theme = createTheme({
+    palette: {
+      mode: "light",
+    },
+    components: {
+      MuiTextField: {
+        defaultProps: {
+          size: "small",
+        },
+      },
+    },
+  });
 
   return (
     <ThemeProvider theme={theme}>
