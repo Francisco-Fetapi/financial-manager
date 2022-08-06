@@ -4,17 +4,20 @@ import DebitAndCredit from "./components/DebitAndCredit";
 import Header from "./components/Header";
 import Transactions from "./components/Transactions";
 import * as S from "./styles/General";
+import { SnackbarProvider } from "notistack";
 
 function App() {
   return (
     <S.AppContainer>
-      <S.AccountingCardContainer>
-        <Header />
-        <CurrentBalance />
-        <DebitAndCredit />
-        <Transactions />
-        <AddTransactions />
-      </S.AccountingCardContainer>
+      <SnackbarProvider maxSnack={3}>
+        <S.AccountingCardContainer>
+          <Header />
+          <CurrentBalance />
+          <DebitAndCredit />
+          <Transactions />
+          <AddTransactions />
+        </S.AccountingCardContainer>
+      </SnackbarProvider>
     </S.AppContainer>
   );
 }

@@ -4,6 +4,7 @@ import useField from "../hooks/useField";
 import { addTransaction } from "../store/App.store";
 import { TextWithDivider } from "../styles/General";
 import { labelTypes } from "./DebitAndCredit";
+import { useSnackbar } from "notistack";
 
 export default function AddTransactions() {
   const [nameField, handleChangeName, handleBlurName, clearName] =
@@ -11,6 +12,7 @@ export default function AddTransactions() {
   const [valueField, handleChangeValue, handleBlurValue, clearValue] =
     useField<number>();
   const dispatch = useDispatch();
+  const { enqueueSnackbar } = useSnackbar();
 
   function addNewTransaction() {
     const name = (typeof nameField.value === "string" && nameField.value) || "";
@@ -20,6 +22,9 @@ export default function AddTransactions() {
       dispatch(addTransaction({ name, value }));
       clearName();
       clearValue();
+      enqueueSnackbar("Transação cadastrada.", { variant: "success" });
+    } else {
+      enqueueSnackbar("Erro ao cadastrar transação.", { variant: "error" });
     }
   }
 
