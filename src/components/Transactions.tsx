@@ -11,7 +11,7 @@ export default function Transactions() {
       <TextWithDivider>Transações</TextWithDivider>
       <Box mt={3}>
         {transactions.map(({ name, value }, key) => (
-          <Transaction name={name} value={value} id={key} />
+          <Transaction name={name} value={value} id={key} key={key} />
         ))}
       </Box>
       {transactions.length === 0 && (
