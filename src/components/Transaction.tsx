@@ -1,14 +1,21 @@
 import { Box, IconButton } from "@mui/material";
 import { MdClose } from "react-icons/md";
+import { useDispatch } from "react-redux";
 import ConvertToLocalMoney from "../helpers/ConvertToLocalMoney";
+import { removeTransaction } from "../store/App.store";
 import { Text, TransactionContainer } from "../styles/General";
 
 interface Props {
   name: string;
   value: number;
+  id: number;
 }
 
-export default function Transaction({ name, value }: Props) {
+export default function Transaction({ name, value, id }: Props) {
+  const dispatch = useDispatch();
+  function remover() {
+    dispatch(removeTransaction(id));
+  }
   return (
     <Box my={1}>
       <TransactionContainer
@@ -17,7 +24,7 @@ export default function Transaction({ name, value }: Props) {
       >
         <Box display="flex" alignItems="center">
           <Box mr={0.3} className="close-button">
-            <IconButton size="small" color="error">
+            <IconButton size="small" color="error" onClick={remover}>
               <MdClose />
             </IconButton>
           </Box>

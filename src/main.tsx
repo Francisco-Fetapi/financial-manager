@@ -6,11 +6,9 @@ import Layout from "./core/mui";
 import store from "./store/App.store";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <Layout>
-        <App />
-      </Layout>
-    </Provider>
-  </React.StrictMode>
+  <Provider store={store}>
+    <Layout>
+      <App />
+    </Layout>
+  </Provider>
 );

@@ -10,15 +10,20 @@ export interface Accounting {
 }
 
 const initialState: Accounting = {
-  transactions: [],
+  transactions: [
+    { name: "Primeira Transacaao", value: 12000 },
+    { name: "Segunda Transacaao", value: -2000 },
+    { name: "Ultima Transacaao", value: 32050 },
+  ],
 };
 
-export const counterSlice = createSlice({
+export const accountingSlice = createSlice({
   name: "accounting",
   initialState,
   reducers: {
     addTransaction(state, action: PayloadAction<Transaction>) {
       state.transactions.push(action.payload);
+      console.log(state.transactions);
     },
     removeTransaction(state, action: PayloadAction<number>) {
       state.transactions.splice(action.payload, 1);
@@ -28,11 +33,11 @@ export const counterSlice = createSlice({
 
 const store = configureStore({
   reducer: {
-    accounting: counterSlice.reducer,
+    accounting: accountingSlice.reducer,
   },
 });
 
-export const { addTransaction, removeTransaction } = counterSlice.actions;
+export const { addTransaction, removeTransaction } = accountingSlice.actions;
 export default store;
 
 export type RootState = ReturnType<typeof store.getState>;
