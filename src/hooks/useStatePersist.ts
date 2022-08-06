@@ -1,15 +1,10 @@
-interface Props {
-  key: string;
-  state: object;
-}
-
-export default function useStatePersist({ key, state }: Props) {
-  function save() {
+export default function useStatePersist<T extends object>(key: string) {
+  function save(state: T) {
     localStorage.setItem(key, JSON.stringify(state));
   }
-  function get() {
+  function get(): T {
     return JSON.parse(localStorage.getItem(key) || "false");
   }
 
-  return [save, get];
+  return { save, get };
 }
