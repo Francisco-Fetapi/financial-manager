@@ -1,10 +1,10 @@
-import { Box, TextField, FormLabel } from "@mui/material";
+import { Box, TextField, Button } from "@mui/material";
 import useField from "../hooks/useField";
 import { TextWithDivider } from "../styles/General";
 
 export default function AddTransactions() {
-  const [nameField, handleChangeName] = useField();
-  const [valueField, handleChangeValue] = useField();
+  const [nameField, handleChangeName, handleBlurName] = useField();
+  const [valueField, handleChangeValue, handleBlurValue] = useField();
 
   return (
     <Box mt={4}>
@@ -18,6 +18,7 @@ export default function AddTransactions() {
           fullWidth
           {...nameField}
           onChange={handleChangeName}
+          onBlur={handleBlurName}
           label="Nome"
         />
       </Box>
@@ -32,7 +33,13 @@ export default function AddTransactions() {
           onChange={handleChangeValue}
           label="Valor"
           type="number"
+          onBlur={handleBlurValue}
         />
+      </Box>
+      <Box mt={2.4}>
+        <Button color="primary" variant="contained" fullWidth>
+          Adicionar
+        </Button>
       </Box>
     </Box>
   );

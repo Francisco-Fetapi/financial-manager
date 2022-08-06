@@ -9,8 +9,15 @@ interface FieldProps {
 type handleChangeFunc = (
   e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | undefined>
 ) => void;
+type handleFocusFunc = (
+  e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement, Element>
+) => void;
 
-export default function useField(): [FieldProps, handleChangeFunc] {
+export default function useField(): [
+  FieldProps,
+  handleChangeFunc,
+  handleFocusFunc
+] {
   const [field, setField] = useState<FieldProps>({
     value: "",
     error: false,
@@ -25,5 +32,9 @@ export default function useField(): [FieldProps, handleChangeFunc] {
     setField({ value, error: false, helperText: "" });
   };
 
-  return [field, handleChange];
+  const handleBlur: handleFocusFunc = () => {
+    setField((prev) => ({ ...prev, error: false, helperText: "" }));
+  };
+
+  return [field, handleChange, handleBlur];
 }
