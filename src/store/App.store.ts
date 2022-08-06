@@ -1,22 +1,29 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { configureStore } from "@reduxjs/toolkit";
 
+export interface Transaction {
+  name: string;
+  value: number;
+}
 export interface Accounting {
-  currentBalance: number;
-  debit: number;
-  credit: number;
+  transactions: Transaction[];
 }
 
 const initialState: Accounting = {
-  currentBalance: 0,
-  debit: 0,
-  credit: 0,
+  transactions: [],
 };
 
 export const counterSlice = createSlice({
   name: "accounting",
   initialState,
-  reducers: {},
+  reducers: {
+    addTransaction(state, action: PayloadAction<Transaction>) {
+      state.transactions.push(action.payload);
+    },
+    removeTransaction(state, action: PayloadAction<number>) {
+      state.transactions.splice(action.payload, 1);
+    },
+  },
 });
 
 const store = configureStore({
