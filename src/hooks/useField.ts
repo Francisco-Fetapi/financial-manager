@@ -16,7 +16,8 @@ type handleFocusFunc = (
 export default function useField<T>(): [
   FieldProps,
   handleChangeFunc,
-  handleFocusFunc
+  handleFocusFunc,
+  () => void
 ] {
   const [field, setField] = useState<FieldProps>({
     error: false,
@@ -38,6 +39,9 @@ export default function useField<T>(): [
   const handleBlur: handleFocusFunc = () => {
     setField((prev) => ({ ...prev, error: false, helperText: "" }));
   };
+  function clear() {
+    setField((prev) => ({ ...prev, value: "" }));
+  }
 
-  return [field, handleChange, handleBlur];
+  return [field, handleChange, handleBlur, clear];
 }

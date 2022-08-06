@@ -6,8 +6,10 @@ import { TextWithDivider } from "../styles/General";
 import { labelTypes } from "./DebitAndCredit";
 
 export default function AddTransactions() {
-  const [nameField, handleChangeName, handleBlurName] = useField<string>();
-  const [valueField, handleChangeValue, handleBlurValue] = useField<number>();
+  const [nameField, handleChangeName, handleBlurName, clearName] =
+    useField<string>();
+  const [valueField, handleChangeValue, handleBlurValue, clearValue] =
+    useField<number>();
   const dispatch = useDispatch();
 
   function addNewTransaction() {
@@ -16,6 +18,8 @@ export default function AddTransactions() {
       (typeof +valueField.value! === "number" && +valueField.value!) || 0;
     if (name && value) {
       dispatch(addTransaction({ name, value }));
+      clearName();
+      clearValue();
     }
   }
 
