@@ -27,11 +27,11 @@ interface LabelProps {
   value: number;
   type: keyof LabelTypes;
 }
-interface LabelTypes {
+export interface LabelTypes {
   Debit: string;
   Credit: string;
 }
-const types: LabelTypes = {
+export const labelTypes: LabelTypes = {
   Debit: green[400],
   Credit: red[400],
 };
@@ -42,7 +42,9 @@ export function Label({ label, value, type }: LabelProps) {
       <Text variant="button" fontWeight={600}>
         {label}
       </Text>
-      <Text style={{ color: types[type] }}>{ConvertToLocalMoney(value)}</Text>
+      <Text style={{ color: labelTypes[type] }}>
+        {ConvertToLocalMoney(value)}
+      </Text>
     </Box>
   );
 }

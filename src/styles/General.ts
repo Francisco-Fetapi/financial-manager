@@ -1,5 +1,6 @@
 import { Typography, Paper } from "@mui/material";
 import styled from "styled-components";
+import { labelTypes } from "../components/DebitAndCredit";
 
 export const AppContainer = styled.div`
   display: flex;
@@ -22,3 +23,17 @@ export const TextWithDivider = styled(Typography)`
   border-bottom: 1px solid #bababa;
   font-weight: 600 !important;
 ` as typeof Typography;
+
+export const TransactionContainer = styled(Paper)`
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &.Debit {
+    border-right: 6px solid ${labelTypes.Debit};
+  }
+  &.Credit {
+    border-right: 6px solid ${labelTypes.Credit};
+  }
+` as typeof Paper;
