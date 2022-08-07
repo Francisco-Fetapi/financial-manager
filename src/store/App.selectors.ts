@@ -26,4 +26,11 @@ export const getAllTransactions = (state: RootState) => {
   return state.accounting.transactions;
 };
 
+export const getAllCredits = (state: RootState) => {
+  return state.accounting.transactions.filter((t) => t.value < 0);
+};
+export const getAllDebits = (state: RootState) => {
+  return state.accounting.transactions.filter((t) => t.value > 0);
+};
+
 export const getTheme = (state: RootState) => state.accounting.darkMode;
