@@ -5,6 +5,7 @@ import { addTransaction } from "../store/App.store";
 import { TextWithDivider } from "../styles/General";
 import { labelTypes } from "./DebitAndCredit";
 import { useSnackbar } from "notistack";
+import { FormEventHandler } from "react";
 
 export default function AddTransactions() {
   const [nameField, handleChangeName, handleBlurName, clearName] =
@@ -14,7 +15,8 @@ export default function AddTransactions() {
   const dispatch = useDispatch();
   const { enqueueSnackbar } = useSnackbar();
 
-  function addNewTransaction() {
+  const addNewTransaction: FormEventHandler<HTMLFormElement> = (e) => {
+    e.preventDefault();
     const name = (typeof nameField.value === "string" && nameField.value) || "";
     const value =
       (typeof +valueField.value! === "number" && +valueField.value!) || 0;
@@ -26,10 +28,10 @@ export default function AddTransactions() {
     } else {
       enqueueSnackbar("Erro ao cadastrar transação.", { variant: "error" });
     }
-  }
+  };
 
   return (
-    <Box mt={4}>
+    <Box mt={4} component="form" onSubmit={addNewTransaction}>
       <TextWithDivider>Adicionar transação</TextWithDivider>
       <Box mt={2}>
         <TextField
@@ -67,12 +69,7 @@ export default function AddTransactions() {
         </Box>
       </Box>
       <Box mt={2.4}>
-        <Button
-          color="primary"
-          variant="contained"
-          fullWidth
-          onClick={addNewTransaction}
-        >
+        <Button type="submit" color="primary" variant="contained" fullWidth>
           Adicionar
         </Button>
       </Box>
