@@ -29,15 +29,17 @@ export default function SpeedDialTooltip() {
         onOpen={handleOpen}
         open={open}
       >
-        {actions.map((action) => (
-          <SpeedDialAction
-            key={action.name}
-            icon={action.icon}
-            tooltipTitle={action.name}
-            tooltipOpen
-            onClick={action.onClick}
-          />
-        ))}
+        {actions
+          .filter((action) => action.show)
+          .map((action) => (
+            <SpeedDialAction
+              key={action.name}
+              icon={action.icon}
+              tooltipTitle={action.name}
+              tooltipOpen
+              onClick={action.onClick}
+            />
+          ))}
       </SpeedDial>
     </Box>
   );
