@@ -45,6 +45,33 @@ export const accountingSlice = createSlice({
       const { save } = useStatePersist<boolean>(THEME_KEY_IN_LOCALSTORAGE);
       save(state.darkMode);
     },
+    removeTransactions(
+      state,
+      action: PayloadAction<"Debits" | "Credits" | "All">
+    ) {
+      let filteredArray: Transaction[] = [];
+      const actions = {
+        Debits() {
+          filteredArray = state.transactions.filter(
+            (transaction) => transaction.value < 0
+          );
+        },
+        Credits() {
+          filteredArray = state.transactions.filter(
+            (transaction) => transaction.value > 0
+          );
+        },
+        All() {
+          filteredArray = [];
+        },
+      };
+      actions[action.payload]();
+      state.transactions = filteredArray;
+      const { save } = useStatePersist<Transaction[]>(
+        TRANSACTIONS_KEY_IN_LOCALSTORAGE
+      );
+      save(state.transactions);
+    },
   },
 });
 
