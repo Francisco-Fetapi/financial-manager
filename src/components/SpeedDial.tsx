@@ -2,56 +2,14 @@ import Box from "@mui/material/Box";
 import SpeedDial from "@mui/material/SpeedDial";
 import SpeedDialIcon from "@mui/material/SpeedDialIcon";
 import SpeedDialAction from "@mui/material/SpeedDialAction";
-import {
-  MdPalette,
-  MdDelete,
-  MdDeleteForever,
-  MdDeleteOutline,
-} from "react-icons/md";
 import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { toggleTheme } from "../store/App.store";
-// Toggle theme
-// Clear all
-// Limpar receitas
-// Limpar despesas
+import useActionsSpeedDial from "../hooks/useActionsSpeedDial";
 
 export default function SpeedDialTooltip() {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-  const dispatch = useDispatch();
-
-  const actions = [
-    {
-      icon: <MdPalette />,
-      name: "Alterar tema",
-      onClick() {
-        dispatch(toggleTheme());
-      },
-    },
-    {
-      icon: <MdDelete />,
-      name: "Apagar receitas",
-      onClick() {
-        // dispatch(toggleTheme());
-      },
-    },
-    {
-      icon: <MdDeleteOutline />,
-      name: "Apagar despesas",
-      onClick() {
-        // dispatch(toggleTheme());
-      },
-    },
-    {
-      icon: <MdDeleteForever />,
-      name: "Apagar tudo",
-      onClick() {
-        // dispatch(toggleTheme());
-      },
-    },
-  ];
+  const actions = useActionsSpeedDial();
 
   return (
     <Box
