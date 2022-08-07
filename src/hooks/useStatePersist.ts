@@ -1,4 +1,6 @@
-export default function useStatePersist<T extends object>(key: string) {
+export default function useStatePersist<T extends object | boolean>(
+  key: string
+) {
   function save(state: T) {
     localStorage.setItem(key, JSON.stringify(state));
   }

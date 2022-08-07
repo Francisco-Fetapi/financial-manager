@@ -25,3 +25,5 @@ export const getCredit = (state: RootState): number => {
 export const getAllTransactions = (state: RootState) => {
   return state.accounting.transactions;
 };
+
+export const getTheme = (state: RootState) => state.accounting.darkMode;

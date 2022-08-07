@@ -3,11 +3,15 @@ import { configureStore } from "@reduxjs/toolkit";
 import useStatePersist from "../hooks/useStatePersist";
 
 const TRANSACTIONS_KEY_IN_LOCALSTORAGE = "transacoes";
+const THEME_KEY_IN_LOCALSTORAGE = "darkMode";
 export interface Transaction {
   name: string;
   value: number;
 }
-export interface Accounting {
+export interface IDarkMode {
+  darkMode: boolean;
+}
+export interface Accounting extends IDarkMode {
   transactions: Transaction[];
 }
 
@@ -15,6 +19,7 @@ const initialState: Accounting = {
   transactions: useStatePersist<Transaction[]>(
     TRANSACTIONS_KEY_IN_LOCALSTORAGE
   ).get(),
+  darkMode: useStatePersist<boolean>(THEME_KEY_IN_LOCALSTORAGE).get(),
 };
 
 export const accountingSlice = createSlice({
@@ -34,6 +39,11 @@ export const accountingSlice = createSlice({
         TRANSACTIONS_KEY_IN_LOCALSTORAGE
       );
       save(state.transactions);
+    },
+    toggleTheme(state) {
+      state.darkMode = !state.darkMode;
+      const { save } = useStatePersist<boolean>(THEME_KEY_IN_LOCALSTORAGE);
+      save(state.darkMode);
     },
   },
 });
