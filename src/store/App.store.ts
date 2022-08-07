@@ -54,7 +54,8 @@ const store = configureStore({
   },
 });
 
-export const { addTransaction, removeTransaction } = accountingSlice.actions;
+export const { addTransaction, removeTransaction, toggleTheme } =
+  accountingSlice.actions;
 export default store;
 
 export type RootState = ReturnType<typeof store.getState>;

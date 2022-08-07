@@ -5,6 +5,8 @@ import Header from "./components/Header";
 import Transactions from "./components/Transactions";
 import * as S from "./styles/General";
 import { SnackbarProvider } from "notistack";
+import Footer from "./components/Footer";
+import SpeedDialTooltip from "./components/SpeedDial";
 
 function App() {
   return (
@@ -16,6 +18,8 @@ function App() {
           <DebitAndCredit />
           <Transactions />
           <AddTransactions />
+          <Footer />
+          <SpeedDialTooltip />
         </S.AccountingCardContainer>
       </SnackbarProvider>
     </S.AppContainer>

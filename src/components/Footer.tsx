@@ -3,9 +3,9 @@ import { Text } from "../styles/General";
 
 export default function Footer() {
   return (
-    <Box mt={2}>
-      <Text color="textSecondary" align="center">
-        Copyrights - Francisco Fetapi
+    <Box mt={4}>
+      <Text variant="subtitle2" color="textSecondary" align="center">
+        &copy; Copyrights - Francisco Fetapi
       </Text>
     </Box>
   );
