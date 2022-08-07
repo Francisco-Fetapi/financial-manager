@@ -1,3 +1,5 @@
 export default function ConvertToLocalMoney(money: number): string {
-  return `AKZ ${money.toLocaleString("pt-AO", { minimumFractionDigits: 2 })}`;
+  return `AKZ ${Math.abs(money).toLocaleString("pt-AO", {
+    minimumFractionDigits: 2,
+  })}`;
 }
