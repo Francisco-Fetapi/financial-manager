@@ -16,9 +16,9 @@ export interface Accounting extends IDarkMode {
 }
 
 const initialState: Accounting = {
-  transactions: useStatePersist<Transaction[]>(
-    TRANSACTIONS_KEY_IN_LOCALSTORAGE
-  ).get(),
+  transactions:
+    useStatePersist<Transaction[]>(TRANSACTIONS_KEY_IN_LOCALSTORAGE).get() ||
+    [],
   darkMode: useStatePersist<boolean>(THEME_KEY_IN_LOCALSTORAGE).get(),
 };
 
