@@ -38,6 +38,7 @@ export default function SpeedDialTooltip() {
               tooltipTitle={action.name}
               tooltipOpen
               onClick={action.onClick}
+              data-testId={action.name.replace(" ", "-").toLowerCase()}
             />
           ))}
       </SpeedDial>
