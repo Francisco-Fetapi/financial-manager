@@ -4,6 +4,7 @@ import { Provider, useDispatch } from "react-redux";
 import { ReactNode, useEffect } from "react";
 import { BrowserRouter } from "react-router-dom";
 import { resetAllState } from "../store/App.store";
+import { SnackbarProvider } from "notistack";
 
 interface AppSetupProps {
   children: ReactNode;
@@ -14,11 +15,13 @@ export function AppSetup({ children }: AppSetupProps) {
   const theme = createTheme({});
   return (
     <Provider store={store}>
-      <ThemeProvider theme={theme}>
-        <BrowserRouter>
-          <ComponentWrapper>{children}</ComponentWrapper>
-        </BrowserRouter>
-      </ThemeProvider>
+      <SnackbarProvider maxSnack={3}>
+        <ThemeProvider theme={theme}>
+          <BrowserRouter>
+            <ComponentWrapper>{children}</ComponentWrapper>
+          </BrowserRouter>
+        </ThemeProvider>
+      </SnackbarProvider>
     </Provider>
   );
 }

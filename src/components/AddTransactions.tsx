@@ -43,6 +43,9 @@ export default function AddTransactions() {
           onChange={handleChangeName}
           onBlur={handleBlurName}
           label="Nome"
+          inputProps={{
+            "data-testid": "input-name",
+          }}
         />
       </Box>
       <Box mt={2}>
@@ -56,6 +59,9 @@ export default function AddTransactions() {
           label="Valor"
           type="number"
           onBlur={handleBlurValue}
+          inputProps={{
+            "data-testid": "input-value",
+          }}
         />
         <Box mt={1}>
           <FormHelperText>
