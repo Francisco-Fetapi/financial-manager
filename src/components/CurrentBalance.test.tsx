@@ -6,7 +6,7 @@ import AddTransactions from "./AddTransactions";
 import CurrentBalance from "./CurrentBalance";
 import Transactions from "./Transactions";
 
-describe("AddTransaction", () => {
+describe("CurrentBalance", () => {
   test("it should be rendered correctly", () => {
     const { getByText } = render(
       <AppSetup>

@@ -6,7 +6,7 @@ import AddTransactions from "./AddTransactions";
 import Transactions from "./Transactions";
 import DebitAndCredit from "./DebitAndCredit";
 
-describe("AddTransaction", () => {
+describe("DebitAndCredit", () => {
   test("it should be rendered correctly", () => {
     const { getAllByText, getByText } = render(
       <AppSetup>
