@@ -21,6 +21,28 @@ describe("AddTransaction", () => {
     await user.type(inputValue, "120");
     await user.click(btnAdd);
 
+    expect(getByText("Transação cadastrada.")).toBeInTheDocument();
     expect(getByText("Nova receita")).toBeInTheDocument();
+  });
+  test("it shouldn't to add new Transaction with errors", async () => {
+    const { getByText, getByTestId } = render(
+      <AppSetup>
+        <AddTransactions />
+      </AppSetup>
+    );
+    const inputName = getByTestId("input-name");
+    const inputValue = getByTestId("input-value");
+    const btnAdd = getByText("Adicionar");
+
+    await user.type(inputValue, "120");
+    await user.click(btnAdd);
+
+    expect(getByText("Erro ao cadastrar transação.")).toBeInTheDocument();
+
+    await user.type(inputValue, "");
+    await user.type(inputName, "Nova transação");
+    await user.click(btnAdd);
+
+    expect(getByText("Erro ao cadastrar transação.")).toBeInTheDocument();
   });
 });
