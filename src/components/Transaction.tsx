@@ -24,7 +24,12 @@ export default function Transaction({ name, value, id }: Props) {
       >
         <Box display="flex" alignItems="center">
           <Box mr={0.3} className="close-button">
-            <IconButton size="small" color="error" onClick={remover}>
+            <IconButton
+              size="small"
+              color="error"
+              onClick={remover}
+              data-testId={name.replace(" ", "-").toLowerCase()}
+            >
               <MdClose />
             </IconButton>
           </Box>
