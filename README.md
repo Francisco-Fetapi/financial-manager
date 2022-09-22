@@ -40,7 +40,7 @@ npm install
 ```
 ### Iniciar o projeto
 ```
-npm start
+npm run dev
 ```
 Rode a aplicação no modo de desenvolvimento com o comando `npm run dev`(executar o comando na raiz do projeto).
 Abra [http://localhost:5173/](http://localhost:5173/) para visualizar o projeto no navegador.
